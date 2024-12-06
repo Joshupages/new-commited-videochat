@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+# Other installed apps in the project
     'chat',
     'channels',
-
     'base',
 ]
 
@@ -71,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'videochat.wsgi.application'
+#WSGI_APPLICATION = 'videochat.wsgi.application'
 ASGI_APPLICATION = 'videochat.asgi.application'
 
 
@@ -131,3 +132,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG' : {
+        #     'hosts': [('127.0.0.1',)],
+        # }
+    }
+}

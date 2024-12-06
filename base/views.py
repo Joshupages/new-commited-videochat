@@ -2,17 +2,19 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import random
 import time
+import os
+# from agora_token_builder import RtcTokenBuilder
 from agora_token_builder import RtcTokenBuilder
 from base.models import RoomMember
 import json
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-def message(request):
-    return render(request, 'base/message.html')
+# def message(request):
+#     return render(request, 'base/message.html')
 
-def start_point_messages(request):
-    return render(request, 'base/start_point_messages.html')
+# def start_point_messages(request):
+#     return render(request, 'base/start_point_messages.html')
 
 def MentalEase(request):
     return render(request, 'base/MentalEase.html')
@@ -37,6 +39,27 @@ def getToken(request):
     token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
 
     return JsonResponse({'token': token, 'uid': uid}, safe=False)
+
+
+# def getToken(request):
+#     appId = os.getenv('AGORA_APP_ID', 'default_app_id')  
+#     appCertificate = os.getenv('AGORA_APP_CERTIFICATE', 'default_app_certificate')  
+#     channelName = request.GET.get('channel')
+
+#     if not channelName:
+#         return JsonResponse({'error': 'Channel name is required.'}, status=400)
+
+#     uid = random.randint(1, 230)
+#     expirationTimeInSeconds = 3600
+#     currentTimeStamp = int(time.time())
+#     privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
+#     role = 1  
+
+#     try:
+#         token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+#         return JsonResponse({'token': token, 'uid': uid}, safe=False)
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=500)
 
 
 @csrf_exempt

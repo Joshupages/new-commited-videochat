@@ -7,7 +7,7 @@ User = get_user_model()
 # Create your models here.
 
 class ThreadManager(models.Manager):
-    def by_user(self, **kwargs):
+    def by_user(self, **kwargs): 
         user = kwargs.get('user')
         lookup = Q(first_person=user) | Q(second_person=user)
         qs = self.get_queryset().filter(lookup).distinct()

@@ -15,7 +15,7 @@ var socket = new WebSocket(endpoint)
 
 socket.onopen = async function(e){
     console.log('open', e)
-    send_message_form.on('submit', function (e){
+    send_message_form.on( 'submit', function (e){
         e.preventDefault()
         let message = input_message.val()
         let send_to = get_active_other_user_id()

@@ -1,6 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
+    {% load static %}
+
 	<head>
 		<title>Chat</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -9,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 
-        <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/messages.css'  %}">
 
     </head>
 	<!--Coded With Love By Mutiullah Samim-->
@@ -114,7 +115,7 @@
                                             <div class="img_cont_msg">
                                                 <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
                                             </div>
-                                            <div class="msg_cotainer">
+                                            <div class="msg_container">
                                                 {{ chat.message }}
                                                 <span class="msg_time">{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</span>
                                             </div>
