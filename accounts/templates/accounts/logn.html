@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MentalEase - Authentication</title>
+  <link rel="stylesheet" href="{% static 'css/sign_in.css' %}">
+</head>
+<body>
+  <div class="container mt-5 pt-4">
+    <!-- Left Side - Image Section -->
+    <div class="image-section">
+      <img src="{% static 'img/sign.png' %}" alt="MentalEase Welcome Image">
+    </div>
+
+    <!-- Right Side - Authentication Form -->
+
+     <!-- <div class="col-6 mx-auto">
+        <h3 class="text-center">Login</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-12"> -->
+
+    <div class="auth-section">
+      <div class="form-container">
+        <h1>Welcome to MentalEase</h1>
+        <p class="subtitle">Please sign in to continue <br>All the field marked with* is mandatory </p>
+
+        <!-- Form -->
+        <form id="authForm" onsubmit="authenticateUser(event)">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+          <label for="password">Password*</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+          <button type="submit"><a href="{% url 'erre' %}">Sign In</a></button>
+        </form>
+
+        <p class="signup-text">Don’t have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="{% static 'js/sign.js' %}"></script> -->
+</body>
+</html>
+
+{% endblock %}

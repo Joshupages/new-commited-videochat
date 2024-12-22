@@ -36,7 +36,7 @@ class ChatConsumer(AsyncConsumer):
             return False
         
         sent_by_user = await self.get_user_object(sent_by_id)
-        send_to_user = await self.get_user_object(sent_by_id)
+        send_to_user = await self.get_user_object(send_to_id)
         thread_obj = await self.get_thread(thread_id)
 
         if not sent_by_user:

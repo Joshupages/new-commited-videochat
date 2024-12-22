@@ -12,7 +12,7 @@ class ChatMessage(admin.TabularInline):
 
 
 
-# class ThreadForm(forms.ModelForm):
+#class ThreadForm(forms.ModelForm):
 #     def clean(self):
 #         """
 #         This is the function that can be used to

@@ -1,0 +1,31 @@
+<!--  templates/account/login.html
+{% extends "accounts/base_generic.html" %}
+
+    {% load static %}
+
+{% block content %}
+<div class="login-container">
+  <h2>Login to Your Account</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></p>
+</div>
+{% endblock %} -->
+
+
+<!-- {% extends "accounts/base.html" %}
+
+{% block title %}Login - MentalEase{% endblock %}
+
+{% block content %}
+<h2>Login to MentalEase</h2>
+<form method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></p>
+{% endblock %} -->

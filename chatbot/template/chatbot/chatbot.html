@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot | MentalEase</title>
+
+    <!-- Import Google Material Icons -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_right" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- External CSS for styling the chatbot -->
+    <link rel="stylesheet" href="chat_bot.css">
+</head>
+<body>
+
+    <style>
+        /* Reset and Global Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f3f4fa;
+            color: #525252;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background: #0B6477; /* Match the black header */
+            width: 100%;
+            padding: 8px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo {
+            width: 100px;
+            height: 60px;
+            height: auto;
+            padding: 20px;
+            border-radius: 40px 0px 45px 0px; 
+        }
+
+        .hero .logo-text {
+            color: #fff;
+            font-weight: 700; /* Bolder weight */
+            font-size: 1.5rem; /* Adjust text size */
+            margin-left: 10px; /* Spacing from the logo */
+        }
+
+        nav ul {
+            width: 100%;
+            display: inline-block; 
+            align-items: center;
+            text-align: center;
+            gap: 20px; /* Add spacing between items */
+            transition: all .5s;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            /* line-height: 80px; */
+            /* margin: 0 5px; */
+            margin: 8px 10px;
+            font-size: larger;
+            font-weight: 800;
+        }
+
+        nav ul li a {
+            color: #fff; 
+            text-decoration: none;
+            /* font-size: 1rem; */
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        a.active{
+            background: #1B9BFF;
+            transition: .5s;
+        }
+
+        .checkbtn{
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+
+        #check{
+            display: none;
+
+        }
+
+        nav ul li a:hover {
+            color: #649676; /* Green highlight on hover */
+            transition: max-height 0.3s ease-in-out;
+            font-weight: bolder;
+        }
+
+        /* User Profile Picture */
+        .user-pic {
+           max-width: 60px; 
+            max-height: 60px;
+            border-radius: 50%; 
+            /* border-radius: 40px 45px 45px 40px; */
+            cursor: pointer;
+            margin-left: 30px;
+        }
+
+        /* Dropdown Menu */
+        .sub-menu-wrap {
+            position: absolute;
+            top: 100%; /* Position below the navbar */
+            right: 8%; 
+            width: 320px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            max-height: 00px; 
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .sub-menu-wrap.open-menu {
+            max-height: 400px;
+        }
+
+        .sub-menu {
+            background: #fff;
+            padding: 25px;
+            margin: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .user-info h3 {
+            font-weight: 500;
+        }
+
+        .sub-menu hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            width: 100%;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #525252;
+            margin: 12px 0;
+            padding: 10px 15px;
+            transition: background 0.3s;
+        }
+
+        .sub-menu-link:hover {
+            background: #f0f0f0; /* Subtle hover background */
+        }
+
+        .sub-menu-link img {
+            width: 45px;
+            height: 38px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 15px;
+        }
+
+        .sub-menu-link p {
+            width: 100%;
+        }
+
+        .sub-menu-link span {
+            font-size: 22px;
+            transition: transform 0.5s;
+        }
+
+        .sub-menu-link:hover span {
+            transform: translateX(5px); /* Subtle arrow movement */
+        }
+
+        .sub-menu-link:hover p {
+            font-weight: 600;
+        }
+
+    @media (max-width: 952px){
+        label.logo{
+            font-size: 30px;
+            padding-left: 50px;
+        }
+
+        nav ul li a{
+
+            font-size: 16px;
+            
+        }
+    } /* Close the first media query */
+ @media (max-width: 858px){
+        .checkbtn{
+            display: block;
+        }
+        ul{
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #2c3e50;
+            top: 80px;
+            left: 0;
+            text-align: center;
+        }
+        nav ul li{
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+        }
+
+        nav ul li a{
+            font-size: 20px;
+        }
+        a:hover,a.active{
+            background: none;
+            color: #0082e6;
+        }
+        #check:checked ~ ul{
+           left: 0; 
+        }
+        section{
+            background: url(img/ken.png) no-repeat;
+            background-size: cover;
+            height: calc(100vh - 80px);
+        }
+        
+    }
+
+</style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <span class="material-symbols-outlined">
+                    menu
+                    </span>
+                <!-- <i class="fas fa-bars"></i> -->
+            </label>
+            <img src="img/logo.png" class="logo" alt="Logo">
+            <h2 class="logo-text">MentalEase</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <img src="img/ken.png" class="user-pic" onclick="toggleMenu()" alt="User Picture">
+
+            <!-- Dropdown Menu -->
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                         <img src="img/ken.png">  <!--alt="User Picture"> -->
+                        <h3>Joshua Senior</h3>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="img/ken.png"> <!--alt="Edit Profile">-->
+                        <p>Edit Profile</p>
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                            </span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="img/setting.png">  <!--alt="Settings"> -->
+                        <p>Settings & Privacy</p>
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                            </span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="img/help.png">  <!-- alt="Help"> -->
+                        <p>Help & Support</p>
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                            </span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="img/logout.png">  <!--alt="Logout">-->
+                        <p>Logout</p>
+                        <span class="material-symbols-outlined">
+                            chevron_right
+                            </span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- <section img src="img/ken.png" >ken</section> -->
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu() {
+            subMenu.classList.toggle("open-menu");
+        }
+    </script>
+    <button id="chatbot-toggler">
+        <span class="material-symbols-outlined">chat</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    <!-- Chatbot Popup Container -->
+    <div class="chatbot-popup">
+        <!-- Chatbot Header -->
+        <div class="chat-header">
+            <!-- Header Information with Logo and Title -->
+            <div class="header-info">
+                <!--Logo for the Chatbot -->
+                <svg class="chatbot-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+                    <path d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5z"></path>
+                </svg>
+                <h2 class="logo-text">MentalEase Chatbot</h2>
+            </div>
+            <!-- Close Button for the Chatbot -->
+            <button id="close-chatbot" class="material-symbols-outlined">keyboard_arrow_down</button>
+        </div>
+
+        <!-- Chatbot Body -->
+        <div class="chat-body">            
+            <div class="message bot-message">
+                <svg class="bot-avatar" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+                    <path d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5z"></path>
+                </svg>
+                <div class="message-text">Hey there 👋 <br> How can I help you today?</div>
+            </div>
+        </div>    
+        <!-- Chatbot Footer -->
+        <div class="chat-footer">
+            <form action="#" class="chat-form">                
+                <textarea placeholder="Type message..." class="message-input" required></textarea>
+                <!-- Chat Controls for Emojis, Attachments, and Sending Messages -->
+                <div class="chat-controls">
+                    <button type="button" id="emoji-picker" class="material-symbols-outlined">sentiment_satisfied</button>
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
+                        <img src="#">
+                        <button type="button" id="file-upload" class="material-symbols-outlined">attach_file</button>
+                        <button type="button" id="file-cancel" class="material-symbols-outlined">close</button>
+                    </div>
+                    <button type="submit" id="send-message" class="material-symbols-outlined">arrow_upward</button>
+                </div>
+            </form>
+        </div>  
+    </div>
+        <!-- for emoji picker -->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

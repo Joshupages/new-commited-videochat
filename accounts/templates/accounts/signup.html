@@ -1,0 +1,17 @@
+<!-- templates/account/signup.html
+ {% extends "accounts/base_generic.html" %} 
+{% extends "account/signup.html" %} 
+
+{% block content %}
+<div class="signup-container">
+  <h2>Create Your Account</h2>
+  <form method="post" action="{% url 'accounts_signup' %}">
+
+    {% csrf_token %}
+    <p>CSRF Token: {% csrf_token %}</p>
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="{% url 'accounts_login' %}">Login</a></p>
+</div>
+{% endblock %} -->

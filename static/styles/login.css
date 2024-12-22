@@ -1,0 +1,135 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f5f9fd; /* Light, calming background */
+  }
+  
+  /* Container for both sections */
+  .container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    height: 70vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Left Side - Image Section */
+  .image-section {
+    flex: 1;
+    background-color: #dfe7f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Right Side - Authentication Section */
+  .auth-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
+  
+  .form-container {
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color:  #649676; /* A calming blue color */
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    color: #4f85d0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+  
+  form label {
+    display: block;
+    color: #4a5b73;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: left;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #d1dce8;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #649676;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  form button:hover {
+    background-color: #649676;
+  }
+  
+  .signup-text {
+    color: #6b7a8e;
+    margin-top: 15px;
+  }
+  
+  .signup-text a {
+    color: #137a03;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .signup-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .image-section {
+      display: none;
+    }
+    
+    .auth-section {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+  
